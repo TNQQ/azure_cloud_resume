@@ -26,6 +26,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}  
 
     - name: Upload frontend to Azure Blob Storage
+      id: upload 
       uses: azure/CLI@v1
       with:
         inlineScript: |
