@@ -1,0 +1,45 @@
+name: Frontend Deployment
+
+on:
+  push:
+    branches:
+      - main  # Auslösen der Pipeline bei Änderungen auf dem main-Branch
+    paths:
+      - 'frontend/**'  # Nur bei Änderungen im frontend-Verzeichnis
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}  
+
+    - name: Upload frontend to Azure Blob Storage
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} -s ./frontend --overwrite
+          
+    - name: Check upload success
+      run: |
+        if [ "${{ steps.upload.outcome }}" != "success" ]; then
+          echo "Upload failed"
+          exit 1
+        fi
+        
+    - name: Purge CDN endpoint # Sicherstellen, dass Änderungen sofort verfügbar sind
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+           az cdn endpoint purge --content-paths "/*" --profile-name "cloudresumecdn" --name "cloudresume-cdn-endpoint" --resource-group "rg1"
+
+    - name: Logout from Azure
+      run: |
+        az logout
+      if: always()  # Sicherstellen, dass Logout immer ausgeführt wird
