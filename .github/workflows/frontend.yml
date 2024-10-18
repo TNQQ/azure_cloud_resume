@@ -26,15 +26,13 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}  
 
     - name: Upload frontend to Azure Blob Storage
-      id: upload 
-      uses: azure/CLI@v1
-      with:
-        inlineScript: |
-          az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} -s ./frontend --overwrite
+      id: upload  
+      run: |
+        az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} -s ./frontend --overwrite
           
     - name: Check upload success
       run: |
-        if [ "${{ steps.upload.outcome }}" != "success" ]; then
+        if [ $? -ne 0 ]; then  # Überprüfe den Rückgabewert des vorherigen Befehls
           echo "Upload failed"
           exit 1
         fi
