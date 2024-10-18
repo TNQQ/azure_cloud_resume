@@ -26,8 +26,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}  
 
     - name: Upload frontend to Azure Blob Storage
-      id: upload  
       run: |
+        echo "Starte den Upload zu Azure Blob Storage..."
         az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} -s ./frontend --overwrite --verbose
         
     - name: Purge CDN endpoint # Sicherstellen, dass Änderungen sofort verfügbar sind
