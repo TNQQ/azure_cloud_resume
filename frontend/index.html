@@ -1,1 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Example styling for the visual separator */
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #ccc;
+            margin: 20px 0;
+        }
 
+        /* Split layout into 15%/85% */
+        .left {
+        
+            float: left;
+            width: 15%;
+            background-color: #f4f4f4;
+            height: 100vh;
+            display: flex;
+            justify-content: center;  /* Horizontale Zentrierung */
+            align-items: center;      /* Vertikale Zentrierung */
+            position: fixed;
+            top: 0;
+            bottom: 0;
+        }
+
+        .right {
+            margin-left: 15%; /* Offset content since left is fixed */
+            width: 85%;
+            padding: 20px;
+        }
+
+        .right-align {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        /* Additional styling for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        #main {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Ensure bullet points are visible */
+        ul {
+            list-style: disc;
+            padding-left: 40px; /* Adjusted for alignment with centered headings */
+        }
+
+        h1 {
+            font-size: 36px; /* Makes the name larger */
+        }
+
+        /* Adding margin between email and the following paragraph */
+        a[href^="mailto"] {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        /* Adjust line spacing in Introduction */
+        #Introduction p {
+            line-height: 1.6; /* Adjusts line spacing */
+        }
+
+        /* Move the name further down on the page */
+        #Introduction {
+            margin-top: 50px; /* Adjust this value for more space */
+        }
+         /* Custom styles for Studium section */
+        #Studium ul li {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        /* Two-column layout for skills section */
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skills-column {
+            width: 48%; /* Each column takes about half of the space */
+        }
+
+        .skills-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-column li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skills-column li i {
+            margin-right: 10px;
+        }
+
+        /* Styling for the left-side links */
+        .left ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .left ul li {
+            margin: 20px 0; /* Spacing between the links */
+            text-align: center;
+        }
+
+        .left ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #333; /* Darker color for better readability */
+            font-size: 18px;
+        }
+
+        /* Small icons for interests */
+        .interests-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .interests-column li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .interests-column li i {
+            margin-right: 10px;
+        }
+
+        /* Center headings and align bullet points */
+        section h2 {
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        section ul {
+            padding-left: 40px; /* Adjust for centering with the heading */
+        }
+        li {
+            line-height: 1.8; /* Zeilenabstand für Bullet Points */
+            margin-bottom: 10px; /* Abstand zwischen Bullet Points */
+        }
+
+        p {
+            line-height: 1.6; /* Zeilenabstand für Fließtext */
+            margin-bottom: 20px; /* Abstand zwischen Absätzen */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <!-- Left navigation side -->
+        <div class="left">
+            <ul>
+                <li><a href="#About">About</a></li>
+                <li><a href="#Studium">Studium</a></li>
+                <li><a href="#Praktikum">Praktikum</a></li>
+                <li><a href="#Werkstudententätigkeit">Werkstudententätigkeit</a></li>
+                <li><a href="#Skills">Skills</a></li>
+                <li><a href="#Zertifikationen">Zertifikationen</a></li>
+                <li><a href="#Interessen">Interessen</a></li>
+                <li><a href="#Cloud Resume">Cloud Resume</a></li>
+            </ul>
+        </div>
+
+        <!-- Right content side -->
+        <div class="right">
+            <!-- Introduction Section -->
+            <section id="Introduction">
+                <h1>Tuananh Nguyen</h1>
+                <a href="mailto:tuananh.nguyen98@hotmail.com">tuananh.nguyen98@hotmail.com</a>
+                
+              <p>Frischer Bachelorabsolvent im Studiengang Elektro- und Informationstechnik mit Schwerpunkt Automatisierungs- und Prozessinformatik.
+                  Ich besitze Erfahrungen in Cloud-Technologien und Künstlicher Intelligenz und bin leidenschaftlich daran interessiert,
+                  meine Karriere im Bereich Cloud, DevOps und KI voranzutreiben, mit starkem Interesse an der Entwicklung innovativer
+                  Lösungen zur Optimierung von Prozessen und der Implementierung intelligenter Systeme. Als Automatisierungstechniker habe ich das Motto "Automate Everything" 
+				  für mich entdeckt und bin engagiert, die neuesten Technologien zu nutzen, um Effizienz und Leistung in verschiedenen 
+				  Anwendungsbereichen zu steigern und wertvolle Beiträge zu zukunftsorientierten Projekten zu leisten.</p>
+
+               <div id="visitor-count" style="font-size: 18px; margin-top: 20px;"></div> <!-- Hier wird die Besucheranzahl angezeigt -->
+
+			<script>
+        	const myApiLink = 'https://deine-serverseitige-api.de/proxy'; // Verwende hier eine Proxy-API, die den Schlüssel serverseitig hinzufügt
+        
+        	const getVisitorCount = () => {
+        		fetch(myApiLink, {
+        			method: 'GET',
+        			headers: {
+        				'Content-Type': 'application/json'
+        			},
+        			mode: 'cors'
+        		})
+        		.then(response => {
+        			if (!response.ok) {
+        				throw new Error('Fehler bei der Kommunikation mit der Azure-Funktion');
+        			}
+        			return response.json();
+        		})
+        		.then(res => {
+        			const count = res.count; // Hier die richtige Eigenschaft für den Zähler aus der Antwort
+        			updateVisitorCount(count); // Aktualisierung der Anzeige
+        		})
+        		.catch(error => {
+        			console.error('Fehler beim Abrufen der Besucheranzahl:', error);
+        			document.getElementById('visitor-count').innerHTML = 'Fehler beim Laden der Besucheranzahl';
+        		});
+        	}
+        
+        	// Funktion zum Aktualisieren der Besucheranzahl im DOM
+        	const updateVisitorCount = (count) => {
+        		const visitorCountElement = document.getElementById('visitor-count');
+        		if (visitorCountElement) {
+        			visitorCountElement.innerHTML = `Sie sind Besucher: ${count} meines Portfolios!`; // Hinweis auf Template-Strings
+        		}
+        	}
+
+          // Sofortige Ausführung der Funktion, um den Zähler abzurufen
+          getVisitorCount();
+        </script>
+
+ 			</section>
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Studium">
+                <h2>Studium</h2>
+                <ul>
+                    <li style="display: flex; justify-content: space-between;">
+                        <span class="bold" style="margin-left: -20px;">Bachelor of Engineering </span>
+                        <span class="right-align">Sept. 2019 – Aug. 2024</span>
+                    </li>
+                    <li>Hochschule Hannover</li>
+                    <li>Elektro- und Informationstechnik</li>
+                    <li>Vertiefung Automatisierungstechnik / Prozessinformatik</li>
+
+                    <li style="display: flex; justify-content: space-between;">
+                        <span class="bold" style="margin-left: -20px;">Leibniz Universität Hannover</span>
+                        <span class="right-align">Sept. 2019 – Aug. 2024</span>
+                    </li>
+                    <li>Elektro- und Informationstechnik</li>
+                </ul>
+            </section>
+
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Praktikum">
+                <h2>Praktikum</h2>
+                <ul>
+                    <li style="display: flex; justify-content: space-between;">
+                        <span class="bold" style="margin-left: -20px;">MAHLE International GmbH: Vorausentwicklung Digitalisierung - AI für innovative Fahrzeuge</span>
+                        <span class="right-align">Sept. 2023 – Feb. 2024</span>
+                    </li>
+                    <li>Durchführung umfassender Datenanalysen und Vorbereitung von Zeitreihendaten für
+                        Modellierungszwecke.</li>
+                    <li>KI basierte Modellierung thermischer Systemkomponenten eines elektrischen Fahrzeugs</li>
+                    <li>Entwicklung einer Python- Schnittstelle zur Ansteuerung und Datenerfassung eines
+                        Versuchsaufbaus eines thermischen Fahrzeugkreislaufs mittels Rest API</li>
+                </ul>
+            </section>
+
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Projekte">
+                <h2>Projekte</h2>
+                <ul>
+                    <li style="display: flex; justify-content: space-between;">
+                        <span class="bold" style="margin-left: -20px;">Kamerageführte Robotik</span>
+                        <span class="right-align">Okt. 2022 – Dez. 2022</span>
+                    </li>
+                    <li>Kollisionsvermeidung eines autonomen Roboters</li>
+                    <li>Einsatz von Deep Learning und dem ResNet18 in PyTorch</li>
+
+                    <li style="display: flex; justify-content: space-between;">
+                        <span class="bold" style="margin-left: -20px;">Abschlussarbeit</span>
+                        <span class="right-align">Apr. 2024 – Juli 2024</span>
+                    </li>
+                    <li>Optimale Ansteuerung eines mobilen Roboters mit Reinforcement Learning</li>
+                </ul>
+            </section>
+
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Werkstudententätigkeit">
+                <h2>Werkstudententätigkeit</h2>
+                <ul>
+                    <li style="display: flex; justify-content: space-between;">
+                        <span class="bold" style="margin-left: -20px;">NQT Baugesellschaft mbH</span>
+                        <span class="right-align">Sept. 2019 – Aug. 2023</span>
+                    </li>
+                    <li>Erstellung von Angeboten und Nachkalkulationen für Bauvorhaben</li>
+                    <li>Bearbeitung und Prüfung von Bauabrechnungen sowie Überwachung der Projektkosten
+                        und des Abrechnungsstandes</li>
+                    <li>Kommunikation und Koordination mit Nachunternehmern, Auftraggebern und anderen
+                        externen Partnern</li>
+                </ul>
+            </section>
+
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Skills">
+                <h2>Skills</h2>
+                <div class="skills-container">
+                    <div class="skills-column">
+                        <ul>
+                            <li><i class="fab fa-aws"></i>AWS S3</li>
+                            <li><i class="fab fa-microsoft"></i>Azure</li>
+                            <li><i class="fab fa-docker"></i>Docker</li>
+                            <li><i class="fab fa-kubernetes"></i>Kubernetes</li>
+                        </ul>
+                    </div>
+                    <div class="skills-column">
+                        <ul>
+                            <li><i class="fas fa-code"></i>Python</li>
+                            <li><i class="fas fa-network-wired"></i>FastAPI/RestAPI</li>
+                            <li><i class="fas fa-brain"></i>PyTorch/ TensorFlow</li>
+                            <li><i class="fas fa-cogs"></i>OpenAI Gym</li>
+                            <li><i class="fab fa-git"></i>Git/GitLab</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <h2>Soft Skills</h2>
+            <ul>
+                <li>Lernbereitschaft</li>
+                <li>Kritikfähigkeit</li>
+                <li>Flexibilität</li>
+            </ul>
+
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Zertifikationen">
+                <h2>Zertifikationen</h2>
+                <ul>
+                    <li>Microsoft Certified Azure Fundamentals AZ 900</li>
+                    <li>Microsoft Certified Azure Adminstrative AZ 104 (In Progress)</li>
+                    <li>Test of English for International Communication (TOEIC)</li>
+                </ul>
+            </section>
+
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Sprachen">
+                <h2>Sprachen</h2>
+                <ul>
+                    <li>Deutsch</li>
+                    <li>Vietnamesisch</li>
+                    <li>Englisch</li>
+                </ul>
+            </section>
+
+            <!-- Separator Line -->
+            <hr>
+
+            <section id="Interessen">
+                <h2>Interessen</h2>
+                <ul>
+                    <li><i class="fas fa-robot"></i>Unity MLAgents</li>
+                    <li><i class="fas fa-keyboard"></i>Mechanical Keyboards</li>
+                    <li><i class="fas fa-utensils"></i>Cooking</li>
+                    <li><i class="fas fa-language"></i>Languages</li>
+                </ul>
+            </section>
+            <!-- Separator Line -->
+            <hr>
+            <section id="Azure Cloud Resume Challenge">
+                <h2>Azure Cloud Resume Challenge</h2>
+                <ul>
+                    <li>Beschreibung:</li>
+                   <p>Im Rahmen der Cloud Resume Challenge habe ich eine voll funktionsfähige und sichere Lebenslauf-Website entwickelt, 
+					   die auf Azure und modernen Webtechnologien basiert. Die statische Seite wurde mit HTML und CSS erstellt und auf 
+					   Azure Blob Storage bereitgestellt, wobei Azure CDN für die schnelle und zuverlässige Inhaltsauslieferung sorgt. 
+					   Für die sichere Kommunikation wurde HTTPS implementiert, und die Domain-Registrierung erfolgte über Azure DNS. 
+					   Ein Besucherzähler, der in JavaScript eingebunden ist, verbindet sich mit Azure Functions zur Backend-Verarbeitung
+					    und nutzt Azure Cosmos DB zur Speicherung der Daten. 
+						CI/CD-Pipelines wurden mithilfe von GitHub Actions für eine automatisierte Bereitstellung eingerichtet.</p>
+
+                    <p>Verwendete Technologien:</p>
+
+                    <li>Frontend: HTML, CSS, JavaScript</li>
+                    <li>Backend: Azure Functions,  Azure Cosmos DB,JavaScript </li>
+                    <li>Infrastruktur:  Azure Blob Storage, Azure CDN, Azure DNS</li>
+					<li>Beobachtbarkeit: Azure Monitor, Application Insights</li>
+                    <li>DevOps: Git, GitHub, GitHub Actions</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+	
+</body>
+</html>
