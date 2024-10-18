@@ -28,14 +28,7 @@ jobs:
     - name: Upload frontend to Azure Blob Storage
       id: upload  
       run: |
-        az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} -s ./frontend --overwrite
-          
-    - name: Check upload success
-      run: |
-        if [ $? -ne 0 ]; then  # Überprüfe den Rückgabewert des vorherigen Befehls
-          echo "Upload failed"
-          exit 1
-        fi
+        az storage blob upload-batch -d '$web' --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} -s ./frontend --overwrite --verbose
         
     - name: Purge CDN endpoint # Sicherstellen, dass Änderungen sofort verfügbar sind
       uses: azure/CLI@v1
@@ -46,4 +39,4 @@ jobs:
     - name: Logout from Azure
       run: |
         az logout
-      if: always()  # Sicherstellen, dass Logout immer ausgeführt wird
+      if: always()  # Sicherstellen, dass Logout immer ausgeführt wird 
