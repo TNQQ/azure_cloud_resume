@@ -1,1 +1,48 @@
+const { CosmosClient } = require("@azure/cosmos");
+
+const endpoint = process.env.COSMOS_ENDPOINT;
+const key = process.env.COSMOS_KEY;
+const client = new CosmosClient({ endpoint, key });
+
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    const databaseId = "ToDoList"; 
+    const containerId = "Container1"; 
+
+    try {
+        // Verbindung zur Datenbank und zum Container herstellen
+        const database = client.database(databaseId);
+        const container = database.container(containerId);
+
+        // Abfrage des Dokuments mit id="item" und Partition Key="item"
+        const { resource: item } = await container.item("item", "item").read();
+
+        if (item) {
+            // Zähler aktualisieren
+            item.count += 1;
+
+            // Dokument mit neuem Zählerwert aktualisieren
+            const { resource: updatedItem } = await container.item("item", "item").replace(item);
+
+            context.res = {
+                status: 200,
+                body: { count: updatedItem.count } // Rückgabe als JSON
+            };
+        } else {
+            // Dokument nicht gefunden
+            context.res = {
+                status: 404,
+                body: { error: "Dokument nicht gefunden" } 
+            };
+        }
+
+    } catch (error) {
+        context.log.error("Fehler beim Zugriff auf Cosmos DB: ", error);
+        context.res = {
+            status: 500,
+            body: { error: "Fehler bei der Verbindung zur Cosmos DB." } 
+        };
+    }
+};
 
